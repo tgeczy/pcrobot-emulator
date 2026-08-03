@@ -52,6 +52,11 @@ Then `python tools/build_addon.py` produces the installable
   detection is done in audio time, one sentence per submission, so long
   text reads with natural pauses and cancellation is always clean.
 
+## Hear it
+
+[`demo/pcrobot_NVDA_demo.mp3`](demo/pcrobot_NVDA_demo.mp3) - the robot
+driving NVDA through Windows dialogs in 2026, recorded live.
+
 ## Credits
 
 * **Nikléczy Péter and Olaszy Gábor (NIKOL)** — the synthesizer itself,
