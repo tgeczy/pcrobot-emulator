@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.nvda-addon
+# The clear boundary: neither NIKOL's engine files nor DOSBox-X binaries
+# live in this repository. See the READMEs for where to get them.
+addon/synthDrivers/_pcrobot_engine/bin/*.EXE
+addon/synthDrivers/_pcrobot_engine/bin/*.OV
+addon/synthDrivers/_pcrobot_engine/bin/*.CF
+addon/synthDrivers/_pcrobot_engine/bin/*.RAW
+addon/synthDrivers/_pcrobot_engine/dosbox/dosbox-x.exe
+addon/synthDrivers/_pcrobot_engine/dosbox/COPYING.txt

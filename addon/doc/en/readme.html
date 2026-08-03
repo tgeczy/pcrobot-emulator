@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>PC-ROBOT for NVDA</title></head><body>
+<h1>PC-ROBOT (MULTIVOX) for NVDA</h1>
+<p>This add-on speaks with <strong>PC-ROBOT / RobotVOX</strong>, the Hungarian speech
+synthesizer sold by Nikol Elektronika of Budapest in 1994. It is the software
+descendant of <strong>MULTIVOX</strong>, the formant synthesizer developed at the
+Hungarian Academy of Sciences' phonetics laboratory, which originally shipped as
+an ISA expansion card.</p>
+
+<h2>How it works</h2>
+<p>Nothing about the voice is re-implemented. The original DOS programs
+(<code>SBDD.EXE</code>, the Sound Blaster driver, and <code>ROBOTVOX.EXE</code>, the speech
+engine) are run in DOSBox-X with the mixer muted, so nothing is heard on the host.
+DOSBox records the audio the sound card would have played, and the add-on hands
+that PCM to NVDA. A small resident DOS program, <code>SPEAK.COM</code>, passes text to
+the engine through its <code>INT 2Fh</code> service.</p>
+
+<h2>Requirements</h2>
+<p><a href="https://dosbox-x.com/">DOSBox-X</a> must be installed. The add-on looks for it in
+<code>C:\DOSBox-X</code> and in Program Files.</p>
+
+<h2>Settings</h2>
+<ul>
+<li><strong>Voice</strong> — the engine's two male voices (Férfi 1 and Férfi 2).</li>
+<li><strong>Rate</strong> — mapped to the engine's speed setting (1 fastest to 7 normal).</li>
+<li><strong>Pitch</strong> — mapped to 55–155 Hz, so NVDA's default sits on the engine's own resting voice of about 105 Hz.</li>
+<li><strong>Volume</strong> — the engine's own 0–13 amplitude.</li>
+<li><strong>Articulation</strong> — 0 (continuous) to 5 (very segmented speech).</li>
+<li><strong>Whisper</strong> — turns the engine's whisper mode on.</li>
+</ul>
+
+<h2>First selection: about ten seconds of silence, with beeps</h2>
+<p>When you choose PC-ROBOT, a whole DOS machine has to boot and the engine speaks
+its own announcement ("Multim&eacute;dia robot, start") inside the muted machine,
+which the add-on waits out so it does not contaminate your first sentence. That
+takes roughly ten seconds, and NVDA has no voice at all during it.</p>
+<p>So the add-on beeps: a <strong>low beep</strong> when it starts booting and a
+<strong>higher beep</strong> when the robot is ready to talk. A <strong>long low
+beep</strong> means the engine failed to start &mdash; check the NVDA log.</p>
+<p>After that, speech is streamed as the robot produces it, so each utterance
+starts promptly. Anything NVDA said while the engine was booting is spoken once
+it is ready.</p>
+
+<p>The speech engine and voice data are © Nikol Elektronika, Budapest. They are
+included here to keep a piece of Hungarian speech-technology history usable.</p>
+<h2>The DOS window</h2>
+<p>DOSBox is hidden as soon as it starts and the keyboard is handed straight back
+to whatever you were using, so it should never take focus or be announced.</p>
+<h2>Latency</h2>
+<p>Audio has to travel from the DOS engine through DOSBox's recorder before NVDA
+can play it, so expect roughly half a second before speech starts. Once the engine
+is warm an utterance costs little more than its own length, and interrupting
+(arrowing quickly through a menu, for example) silences the engine straight away.</p>
+</body></html>
